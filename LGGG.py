@@ -18,3 +18,13 @@ def runGame():
 
     pygame.quit()
 
+def initGame():
+    global gamepad
+    
+    pygame.init()
+    gamepad = pygame.display.set_mode((pad_width, pad_height))
+    pygame.display.set_caption('LGGG Lots')
+
+    runGame()
+
+initGame()
