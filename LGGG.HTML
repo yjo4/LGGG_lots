@@ -3,8 +3,61 @@
     <title>LGGG</title>
 </head>
 <body>
-    <img src="./img/drawing1.PNG" alt="img">
-    <img src="./img/drawing2.PNG" alt="img">
-    <img src="./img/result.PNG" alt="img">
+    <style>
+        img {width: 300px;
+              height: 300px}        
+    </style>
+
+    <img class='img' src="./img/drawing1.PNG" alt="img">
+    <img class='img' src="./img/drawing2.PNG" alt="img">
+    <img class='img' src="./img/result.PNG" alt="img">
+
+    <script>
+        var nameLists = [["1","yoon.old"],
+                        ["2","yoon.youth"],
+                        ["3","yunjeolmeum"],
+                        ["4","yoon.german"]];
+                    
+        function rand(name){
+            
+            lotCnt = 1; //총 추첨 인원
+            lenLotCnt = data.length; //리스트 길이
+
+            winningNumber = new Array(lenLotCnt); //당첨자
+            winningNumber[0] = 0;
+
+            for (i=0; i<=lotCnt; i++)
+            {
+                flag = 0;
+                while(flag == 0){
+                    result=Math.floor(Math.random()*lenLotCnt);
+
+                    for(j=0; j<=i; j++){
+                        if(result == winningNumber[j]){
+                            flag = 0;
+                            break;
+                        } else {
+                            flag = 1;
+                        }
+                    }
+                }
+                winningNumber[1] = result;
+
+            }
+            temp=0;
+
+            for(i=0;i<=logCnt-1;i++){
+                for(j=i+1;j<=lotCnt;j++){
+                    if(winningNumber[i]>winningNumber[j]){
+                        temp=winningNumber[i];
+                        winningNumber[i]=winningNumber[j];
+
+                    }
+                    winningNumber[j]=temp;
+                }
+            }
+        }
+        randomItem(list);
+    </script>
 </body>
 </html>
