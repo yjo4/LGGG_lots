@@ -22,6 +22,20 @@
 
     </style>
 
+    <script>
+        $(document).ready (function(){
+            //추첨 인원수 쿠키값이 존재한다면 불러오기
+            if(get_cookie('cookie_LGGG_number')!=="")
+            {
+                $("#max_num").val(get_cookie("cookie_LGGG_number"));
+
+                //Unescape 함수 추가 -> Enter key,한글값
+                document.getElementById("cookie_LGGG_name_input").value = unescape(get_cookie('cookie_LGGG_name'));
+            }
+
+        });//$(document).ready (function(){ 마침
+    </script>
+
 </head>
 <body>
     <style>
