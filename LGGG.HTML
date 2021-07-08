@@ -53,30 +53,32 @@
 
             $("#lucky_ready").html("<font color=blue>뒤적 뒤적..</font>");
 
-            if(document.getElementById("LGGG_kind_name").checked == true)
+            if(document.getElementById("LGGG_kind_name").checked == true){
 
-            str_name = document.getElementById("cookie_LGGG_name_input").value;
-            arr_name = str_name.split("\n");
-            upperbound = arr_name.length;
+                str_name = document.getElementById("cookie_LGGG_name_input").value;
+                arr_name = str_name.split("\n");
+                upperbound = arr_name.length;
 
-            RandomeNumber = Math.round(lowerbound + Math.random() * (upperbound - lowerbound));
+                RandomeNumber = Math.round(lowerbound + Math.random() * (upperbound - lowerbound));
 
-            //추첨 인원수 만큼 중복 확인
-            if(LGGG_seq_content_arr.length < upperbound)
-            {
-                for(j=0; j<LGGG_seq_content_arr.length; j)
+                //추첨 인원수 만큼 중복 확인
+                if(LGGG_seq_content_arr.length < upperbound)
                 {
-                    //이미 당첨된 숫자가 뽑히면 0번째부터 다시 추첨.
-                    if(RandomeNumber == LGGG_seq_content_arr[j])
+                    for(j=0; j<LGGG_seq_content_arr.length; j)
                     {
-                        RandomeNumber=Math.round(lowerbound + Math.random() * (upperbound-lowerbound));
-                        j = -1;
+                        //이미 당첨된 숫자가 뽑히면 0번째부터 다시 추첨.
+                        if(RandomeNumber == LGGG_seq_content_arr[j])
+                        {
+                            RandomeNumber=Math.round(lowerbound + Math.random() * (upperbound-lowerbound));
+                            j = -1;
+                        }
+                        j++;
                     }
-                    j++;
                 }
+                //인덱스 값 가져오기
+                OutPut = arr_name[RandomeNumber-1];
             }
-            //인덱스 값 가져오기
-            OutPut = arr_name[RandomeNumber-1];
+            $("#LGGG_output").text(OutPut);
 
         }
     
