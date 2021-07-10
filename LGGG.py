@@ -13,6 +13,22 @@ pygame.display.set_caption(title)
 #3. 스크린 설정
 clock = pygame.time.Clock()
 
+class obj:
+    def __init__(self):
+        self.x = 0 
+        self.y = 0
+    def put_img(self,address):
+        if address[-3:]== "png":
+            self.img = pygame.image.load(address).convert_alpha()
+        else:
+            self.img = pygame.image.load(address)
+            self.sx, self.sy = self.img.get_size()
+    def change_size(self, sx, sy):
+        self.img = pygame.transform.scale(self.img, (sx,sy))
+        self.sx, self.sy = self.img.get_size()
+    def show(self):
+        screen.blit(self.img, (self.x, self.y))
+
 img1 = pygame.image.load("images/IMG1.PNG").convert_alpha()
 img1 = pygame.transform.scale(img1,(400,400))
 
@@ -23,6 +39,7 @@ img3 = pygame.image.load("images/IMG3.PNG").convert_alpha()
 img3 = pygame.transform.scale(img3,(400,400))
 
 k = 0
+space_stop = False
 
 #4. 메인 이벤트 
 
@@ -36,13 +53,23 @@ while SB == 0:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             SB = 1
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                space_stop == True
+               
 
     # 4-3. 입력, 시간에 따른 변화
     k += 1
+    
     if k % 2 == 0:
         screen.blit(img1,(0,0))
     else:
         screen.blit(img2,(0,0))
+
+    if space_stop == True:
+        result = obj()
+        result.put_img(img3,(0,0))
+    
 
     # 4-4. 그리기
     #screen.fill(white)
