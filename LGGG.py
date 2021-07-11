@@ -4,8 +4,10 @@ import pygame
 pygame.init()
 
 #2. 뽑기 옵션 설정
-size = [400, 400]
+size = [800, 400]
 screen = pygame.display.set_mode(size)
+white = (255,255,255)
+screen.fill(white)
 
 title = "LGGG lots" #직접 입력 받기
 pygame.display.set_caption(title)
@@ -42,9 +44,8 @@ k = 0
 space_stop = False
 
 #4. 메인 이벤트 
-
-SB = 0
-while SB == 0:
+run = True
+while run:
 
     # 4-1. FPS 설정
     clock.tick(5)
@@ -52,11 +53,28 @@ while SB == 0:
     # 4-2. 각종 입력 감지
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            SB = 1
-        if event.type == pygame.KEYDOWN:
+            run = False
+        elif space_stop  == False and event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                space_stop == True
+                space_stop  = True
+                print(space_stop)
                
+        elif space_stop  == False and event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                column_index = event.pos[0] 
+                row_index = event.pos[1] 
+                space_stop  = True
+
+        elif space_stop  == True and event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                space_stop  = False
+                print(space_stop)
+               
+        elif space_stop  == True and event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                column_index = event.pos[0] 
+                row_index = event.pos[1] 
+                space_stop  = False
 
     # 4-3. 입력, 시간에 따른 변화
     k += 1
@@ -67,14 +85,15 @@ while SB == 0:
         screen.blit(img2,(0,0))
 
     if space_stop == True:
-        result = obj()
-        result.put_img(img3,(0,0))
-    
-
+        screen.blit(img3,(0,0))
+        
     # 4-4. 그리기
     #screen.fill(white)
     # screen.blit(img1,(0,0))
+    # 결과 띄우기
+    font = pygame.font.Font("font/DaeHan")
 
+    
     # 4-5. 업데이트
     pygame.display.flip()
     
