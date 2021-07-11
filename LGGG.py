@@ -93,8 +93,8 @@ while run:
     #screen.fill(white)
     # screen.blit(img1,(0,0))
     # 결과 띄우기
-    #font = pygame.font.Font("font/DaeHan.app")
-
+    font = pygame.font.Font("font/DaeHan.app")
+    text = font.render("nameList:{}".format(nameList), True, (0,0,255)) #True -> 글자를 매끄럽게
     
     # 4-5. 업데이트
     pygame.display.flip()
