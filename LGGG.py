@@ -12,6 +12,8 @@ screen.fill(white)
 title = "LGGG lots" #직접 입력 받기
 pygame.display.set_caption(title)
 
+nameList = "yoon.german"
+
 #3. 스크린 설정
 clock = pygame.time.Clock()
 
@@ -91,7 +93,7 @@ while run:
     #screen.fill(white)
     # screen.blit(img1,(0,0))
     # 결과 띄우기
-    font = pygame.font.Font("font/DaeHan")
+    #font = pygame.font.Font("font/DaeHan.app")
 
     
     # 4-5. 업데이트
